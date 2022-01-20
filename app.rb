@@ -10,5 +10,10 @@ get '/' do
 end
 
 post '/incoming' do
+  logger.info("Request signature: #{request.env['HTTP_X_TWILIO_SIGNATURE']}")
+  logger.info("Request body: #{request.body.read.inspect}")
+  logger.info("Request URL: #{request.url}")
+  logger.info("Request media type: #{request.media_type}")
+
   "Signature validation succeeded."
 end
